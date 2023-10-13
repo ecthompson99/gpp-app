@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet, SafeAreaView, FlatList } from 'react-native';
+import { View, Text, Button, StyleSheet, SafeAreaView } from 'react-native';
 
 
 const exercises = {
@@ -24,9 +24,7 @@ const App = () => {
   const pickRandomExercise = () => {
     const index = Math.floor(Math.random() * Object.keys(exercises).length);
     const exerciseName = Object.keys(exercises)[index];
-    console.log(exerciseName);
     const [min, max] = exercises[exerciseName]
-
     const numReps = min + Math.floor(Math.random() * (max - min));
 
     setExercise(exerciseName);
@@ -34,8 +32,6 @@ const App = () => {
   }
 
   const updateCount = () => {
-    console.log(exercise);
-    console.log(repQty);
     setCount(prevCount => ({ ...prevCount, [exercise]: (prevCount[exercise] || 0) + repQty }));
     pickRandomExercise();
   }
